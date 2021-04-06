@@ -1,0 +1,19 @@
+name: rawdrawandroid
+on:
+  push:
+    branches:
+      - '**' # All branches for now
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Can we do this without a custom "container:"?
+    steps:
+    - uses: actions/checkout@v2
+    - name: Update packagedb
+      run: apt update
+    - name: Install dependencies
+      run: apt install -y openjdk-11-jdk-headless adb
+      #TODO install android deps
+      #TODO make 
+
