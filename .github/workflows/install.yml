@@ -11,9 +11,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Update packagedb
-      run: apt update
+      run: sudo apt-get update
     - name: Install dependencies
-      run: apt install -y openjdk-11-jdk-headless adb
+      run: sudo apt-get install -y openjdk-11-jdk-headless adb
       #TODO install android deps
       #TODO make 
 
