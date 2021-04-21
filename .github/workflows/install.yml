@@ -15,6 +15,7 @@ jobs:
       URL_CLITOOLS: https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
     steps:
     - uses: actions/checkout@v2
+      submodules: recursive
     - name: Install dependencies (apt)
       run: sudo apt-get install -y --no-install-recommends
             build-essential
