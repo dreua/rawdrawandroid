@@ -45,10 +45,10 @@ jobs:
                     # This list can probably be reduced
 
     - name: Build APK
-      run: cd rawdrawandroid && make keystore && make
+      run: make keystore && make
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
         name: apk
-        path: rawdrawandroid/*.apk
+        path: *.apk
 
