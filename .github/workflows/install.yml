@@ -8,6 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     # Can we do this without a custom "container:"?
+    env:
+      ANDROID_HOME: /home/droid/android-sdk
+      SDKMANAGER: $ANDROID_HOME/cmdline-tools/bin/sdkmanager
+      TMPFILE: /home/droid/temp.zip
+      URL_CLITOOLS: https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies (apt)
@@ -20,11 +25,6 @@ jobs:
             git \
             vim \
             gettext-base
-    - env:
-      ANDROID_HOME: /home/droid/android-sdk
-      SDKMANAGER: $ANDROID_HOME/cmdline-tools/bin/sdkmanager
-      TMPFILE: /home/droid/temp.zip
-      URL_CLITOOLS: https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
       
     - name: Download Android tooling
       run: mkdir -p ${ANDROID_HOME} \
