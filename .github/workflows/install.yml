@@ -10,7 +10,7 @@ jobs:
     # Can we do this without a custom "container:"?
     env:
       ANDROID_HOME: /home/droid/android-sdk
-      SDKMANAGER: $ANDROID_HOME/cmdline-tools/bin/sdkmanager
+      SDKMANAGER: /home/droid/android-sdk/cmdline-tools/bin/sdkmanager
       TMPFILE: /home/droid/temp.zip
       URL_CLITOOLS: https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
     steps:
@@ -46,7 +46,8 @@ jobs:
 
     - name: Build APK
       run: cd rawdrawandroid && make keystore && make
-    - uses: actions/upload-artifact@v2
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
       with:
         name: apk
         path: rawdrawandroid/*.apk
