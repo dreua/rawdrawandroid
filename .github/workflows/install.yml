@@ -45,7 +45,6 @@ jobs:
                     "platforms;android-30"
                     "tools"
                     # This list can probably be reduced
-    - run: echo "Built by GH-Actions!" > Sources/assets/asset.txt
     - name: Build APK
       run: make keystore && make
     - name: Upload artifacts
