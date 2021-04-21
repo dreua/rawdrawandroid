@@ -27,14 +27,14 @@ jobs:
             gettext-base
       
     - name: Download Android tooling
-      run: mkdir -p ${ANDROID_HOME}
-            && wget --quiet ${URL_CLITOOLS} -O ${TMPFILE}
-            && unzip -d ${ANDROID_HOME} ${TMPFILE}
-            && rm ${TMPFILE}
+      run: sudo mkdir -p ${ANDROID_HOME}
+            && sudo wget --quiet ${URL_CLITOOLS} -O ${TMPFILE}
+            && sudo unzip -d ${ANDROID_HOME} ${TMPFILE}
+            && sudo rm ${TMPFILE}
                   
     - name: Install Android tooling
-      run: yes | $SDKMANAGER --sdk_root=${ANDROID_HOME} --licenses
-            && $SDKMANAGER --sdk_root=${ANDROID_HOME}
+      run: yes | sudo $SDKMANAGER --sdk_root=${ANDROID_HOME} --licenses
+            && sudo $SDKMANAGER --sdk_root=${ANDROID_HOME}
                     "build-tools;29.0.3"
                     "cmake;3.10.2.4988404"
                     "ndk;22.1.7171670"
@@ -46,4 +46,8 @@ jobs:
 
     - name: Build APK
       run: cd rawdrawandroid && make keystore && make
+    - uses: actions/upload-artifact@v2
+      with:
+        name: apk
+        path: rawdrawandroid/*.apk
 
