@@ -50,5 +50,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: apk
-        path: *.apk
+        path: ./*.apk
 
